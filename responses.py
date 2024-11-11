@@ -1,5 +1,5 @@
 from random import choice, randint
-
+from discord import Message
 
 def get_response(user_input: str) -> str:
     lowered: str = user_input.lower() # Because Python is case-sensitive, let's make everything lowercase
@@ -15,4 +15,7 @@ def get_response(user_input: str) -> str:
         return choice(['E-eeehh!!! ☆⌒(> _ <)',
                         'Puhutpa kummia, isi (*ﾉωﾉ)',
                         'E-en mä ymmärrä....'])
+
+
+
 

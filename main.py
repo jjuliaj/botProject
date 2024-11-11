@@ -43,8 +43,14 @@ async def on_message(message: Message) -> None:
     user_message: str = str(message.content)
     channel: str = str(message.channel)
 
-    print(f'[{channel}] {username}: "{user_message}"')
-    await send_message(message, user_message)
+    # Check if the bot is mentioned in the message
+    if client.user in message.mentions:
+        # Remove the bot mention fron the start of the message
+        user_message = user_message.replace(f'<@!{client.user.id}>', '').strip() # Handle regular mentions
+        user_message = user_message.replace(f'<@!{client.user.id}>', '').strip()  # Handle nickname mentions
+
+        print(f'[{channel}] {username}: "{user_message}"')
+        await send_message(message, user_message)
 
 # Main entry point for running code
 def main() -> None:
